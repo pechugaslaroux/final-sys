@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 
 
 
-def graficar(signal, x_label, y_label, title, fs = 44100, x_scale = 'linear', y_scale = 'linear'):
+def graficar(signal, x_label = 'x', y_label = 'y', title = '', fs = 44100, x_scale = 'linear', y_scale = 'linear'):
     """ 
     Función para graficar. 
 

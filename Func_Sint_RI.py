@@ -29,8 +29,8 @@ def sint_RI(T60 , fs, fi = [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000 , 4000 
         acumulador = 0
         for n in range(len(fi)):
             array_temp = yilist[n]
-            #acumulador = acumulador + array_temp[i]
-            acumulador = np.cumsum(array_temp[i])
+            acumulador = acumulador + array_temp[i]
+            #acumulador = np.cumsum(array_temp[i])
         yi_total.append(acumulador)
     yi_total = np.array(yi_total)
     yi_total = yi_total[::-1]
