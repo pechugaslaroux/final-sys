@@ -34,11 +34,11 @@ def sfilt(T, fs = 44100, f1 = 20, f2 = 22050):
     conv_max = max(abs(max(conv)), abs(min(conv)))
     conv_norm = conv/conv_max
     #genera los audios
-    sf.write('sinesweep.wav', fnorm, fs)
+    sf.write('./audio_generate/sinesweep.wav', fnorm, fs)
     
-    sf.write('invfiltro.wav', x, fs)
+    sf.write('./audio_generate/invfiltro.wav', x, fs)
 
-    sf.write('convolucion.wav', conv_norm, fs)
+    sf.write('./audio_generate/convolucion.wav', conv_norm, fs)
 
     return {
         'sine': fnorm,

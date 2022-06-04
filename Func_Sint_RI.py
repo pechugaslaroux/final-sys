@@ -37,5 +37,5 @@ def sint_RI(T60 , fs, fi = [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000 , 4000 
 
     yi_max = max(abs(max(yi_total)), abs(min(yi_total)))
     yi_total_normalizado = yi_total/yi_max
-    sf.write('impulso_sintetizado.wav', yi_total_normalizado, 44100)
+    sf.write('./audio_generate/impulso_sintetizado.wav', yi_total_normalizado, 44100)
     return yi_total_normalizado

@@ -47,6 +47,6 @@ def ruidoRosa_voss(t, ncols=16, fs=44100):
     
     # Agregar generación de archivo de audio .wav
     
-    sf.write('RuidoRosa.wav', total, fs)
+    sf.write('./audio_generate/RuidoRosa.wav', total, fs)
     
     return total

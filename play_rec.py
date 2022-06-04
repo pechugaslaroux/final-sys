@@ -7,7 +7,7 @@ def playrec(t, audio_sn, fs = 44100):
     """funcion para reproducir un audio de sine sweep logarítmico y grabar de forma simultanea
 
     Args:
-        t (int): tiempo de ka grabación (en segundos)
+        t (int): tiempo de la grabación (en segundos)
         audio_sn (str): el nombre del archivo de audio del sine sweep "./nombre"
         fs (int, optional): frecuencia de sampleo. Default 44100.
     """
@@ -22,4 +22,4 @@ def playrec(t, audio_sn, fs = 44100):
     
     myrecording = sd.rec(int(t * fs), samplerate=fs, channels=1)
     sd.wait()  # Wait until recording is finished
-    write('output.wav', fs, myrecording)  # Save as WAV file
+    write('./audio_generate/output.wav', fs, myrecording)  # Save as WAV file
