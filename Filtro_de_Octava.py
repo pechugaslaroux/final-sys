@@ -1,15 +1,15 @@
 import numpy as np
 import pandas as pd
 from scipy import signal
-import librosa
 import soundfile as sf
 
 
 def FiltrodeOctava(audio_RI, sr = 44100):
+
     """funcion filtro de octava según Norma IEC61260
 
     Args:
-        audiofile_RI (wav): Archivo al que se le aplicará el filtro
+        audio_RI (array): array de la señal a la que se le aplicará el filtro
 
     Returns:
         array: Informacion del filtro
@@ -19,9 +19,6 @@ def FiltrodeOctava(audio_RI, sr = 44100):
     #freacuencias centrales norma IEC61260
     fi = [31.5,63,125,250,500,1000,2000,4000,8000,16000]
     factor = np.power(2, G)
-    
-    #transforma en data frame el archivo .wav
-    #y,sr = librosa.load(audiofile_RI, sr=None)
 
     df = pd.DataFrame(audio_RI)
 
@@ -36,10 +33,8 @@ def FiltrodeOctava(audio_RI, sr = 44100):
         lowerCutoffFrequency_Hz=centerFrequency_Hz/factor;
         upperCutoffFrequency_Hz=centerFrequency_Hz*factor;
 
-        #print('Frecuencia de corte inferior: ', round(lowerCutoffFrequency_Hz), 'Hz')
-        #print('Frecuencia de corte superior: ', round(upperCutoffFrequency_Hz), 'Hz')
 
-        # Extraemos los coeficientes del filtro 
+        # Extremos los coeficientes del filtro 
         b,a = signal.iirfilter(4, [2*np.pi*lowerCutoffFrequency_Hz,2*np.pi*upperCutoffFrequency_Hz],
                                     rs=60, btype='band', analog=True,
                                     ftype='butter') 
