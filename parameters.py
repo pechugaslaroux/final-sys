@@ -11,7 +11,6 @@ def edt(impulso, fs = 44100):
     Returns:
         list: los parametros de edt por banda de octava.
     """
-    
     t = np.arange(len(impulso))/fs 
     index_edt = np.where(((impulso <= -1) & (impulso >= -10)))
     coeff_edt = np.polyfit(t[index_edt[0]],
