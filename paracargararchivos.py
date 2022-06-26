@@ -1,29 +1,27 @@
 
-def cargar_rutas():
-    """funcion que guarda las rutas de archivos para luego ser utilizados.
-    Cuando se ingrse poner como ejemplo: C:/Users/Documents/xxx/xxx/nombre_del_archivo.wav
+def cargar_archivos(*archivos_a_cargar):
+    """función recibe los nombres de los archivos que desea cargar y los mapea con la ruta ingresada por el usuario.
+    Cuando se ingrese una ruta debe ser absoluta. Ejemplo: C:/Users/Documents/xxx/xxx/nombre_del_archivo.wav
 
     Returns:
-        list: contiene las rutas a los archivos a utilizar y otra con los nombres
+        dict: contiene las rutas a los archivos a utilizar
     """
-    rutas = []
-    nombres = []
-    cant_aud = int(input("ingrese la cantidad de audios que quiera cargar "))
+    rutas = {}
+    
+    for archivo in archivos_a_cargar:
+      ruta = input('Ingrese la ruta del archivo ' + archivo + ':\n')
+      rutas[archivo] = ruta
 
-    for i in range(cant_aud):
-        b = input("ingrese el nombre del archivo ")
-        nombres.append(b)
-        a = input("ingrese la ruta del archivo ")
-        rutas.append(a)
+    return rutas
 
-    return {
-        'rutas': rutas,
-        "nombres": nombres
-    }
 
-# Forma de traerlo:
-#data = cargar_rutas()
-#nombre = data['nombres']
-#files = data['rutas']
-
+if __name__ == '__main__':
+  archivo_output_nombre = 'Output.wav'
+  archivo_fi_nombre = 'Filtro inverso'
+  archivo_ri_nombre = 'RI descargado'
+  rutas = cargar_archivos(archivo_output_nombre, archivo_fi_nombre, archivo_ri_nombre)
+  print(rutas)
+  print(rutas[archivo_output_nombre])
+  print(rutas[archivo_fi_nombre])
+  print(rutas[archivo_ri_nombre])
 

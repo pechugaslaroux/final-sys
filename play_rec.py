@@ -11,14 +11,15 @@ def playrec(t, audio_sn, fs = 44100):
         audio_sn (str): el nombre del archivo de audio del sine sweep "./nombre"
         fs (int, optional): frecuencia de sampleo. Default 44100.
     """
-    a = sd.query_devices()  
+    """a = sd.query_devices()  
     print(a)
     disp = int(input("el nombre del dispositivo para reproducir"))
     sd.default.device = disp
+    """
     wave_obj = sa.WaveObject.from_wave_file(audio_sn)
-    play_obj = wave_obj.play()
-    disp = int(input("el nombre del dispositivo para grabar"))
-    sd.default.device = disp
+    wave_obj.play()
+    #disp = int(input("el nombre del dispositivo para grabar"))
+    #sd.default.device = disp
     
     myrecording = sd.rec(int(t * fs), samplerate=fs, channels=1)
     sd.wait()  # Wait until recording is finished

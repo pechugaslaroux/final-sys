@@ -13,11 +13,16 @@ def suavizado(audio, metodo = 'hilbert', ventana = 11):
         array: numpy array de la señal suavizada.
     """
     if metodo == 'hilbert':
-        suave_audio = np.abs(hilbert(audio))
+        suave = np.abs(hilbert(audio))
         
     if metodo == 'median':
-        suave_audio = medfilt(audio, ventana)
+        suave_audio = np.zeros(len(audio)-ventana)
+        for i in range(0, len(suave_audio)):
+            suave_audio[i] = np.mean(audio[i:i+ventana])
+            # Agregamos ceros para compensar el delay
+        suave = np.hstack([np.zeros(ventana//2), suave_audio, np.zeros(ventana//2)])
+  
   
 
-    return suave_audio
+    return suave
 

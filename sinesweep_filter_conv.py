@@ -1,10 +1,11 @@
 import numpy as np
 import soundfile as sf
 import scipy.signal as sig
+from graficar import graficar
 
 
 
-def sfilt(T, fs = 44100, f1 = 20, f2 = 22050):
+def sfilt(T, fs = 44100, f1 = 20, f2 = 20000):
     """ funcion que genera un sine sweep logarítmico y filtro inverso
 
     Args:
@@ -16,6 +17,8 @@ def sfilt(T, fs = 44100, f1 = 20, f2 = 22050):
 
     w1=2*np.pi*f1
     w2=2*np.pi*f2
+    #nx = round(T*fs)
+    #t = np.linspace(0,T,nx)
     t = np.arange(0, T*fs)/fs
     R=np.log(w2/w1)
     K=(T*w1)/R
@@ -46,4 +49,20 @@ def sfilt(T, fs = 44100, f1 = 20, f2 = 22050):
         "conv": conv_norm
     }
 
+"""
+Test:
+a = sfilt(10)
 
+b = a['sine']
+
+c = a['filtro']
+
+d = a['conv']
+
+graficar(b)
+
+graficar(c)
+
+graficar(d)
+
+"""

@@ -26,3 +26,10 @@ def respuesta_impulso(file_y, file_x):
     sf.write("./audio_generate/RespImpulso.wav", h_norm, 44100)
     
     return h_norm
+
+""""
+a1 = "audio_generate/impulso_sintetizado.wav"
+a2 = "audio_generate/convolucion.wav"
+a3 = respuesta_impulso(a1, a2)
+print(a3)
+"""
