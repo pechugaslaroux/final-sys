@@ -1,5 +1,6 @@
 import numpy as np
 import soundfile as sf
+from graficar import graficar
 
 
 def de_wav_a_array(audio):
@@ -22,4 +23,8 @@ def de_wav_a_array(audio):
         "fs": f_s
     }
 
-
+if __name__ == '__main__':
+  a = de_wav_a_array('./Audios Descargados RI/spokane_womans_club_ir.wav')
+  b = a['arr']
+  print(b)
+  graficar(b)

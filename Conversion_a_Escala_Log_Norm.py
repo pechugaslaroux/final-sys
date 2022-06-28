@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def func_Conver_log_norm(señal):
     """funcion que convierte a escala logaritmica normalizada
@@ -19,9 +20,18 @@ def func_Conver_log_norm(señal):
    
     return logNorm
 
-"""
-señal = [0, 1, 2 ,3 ,5, 6, 2,-2, 0]
-
-a = func_Conver_log_norm(señal)
-print(a)
-"""
+if __name__ == '__main__':
+  señal = [1, 2 ,3 ,4, 5, 6 , 7, 8, 9, 10]
+  señal = np.array(señal)
+  a = func_Conver_log_norm(señal)
+  print(a)
+  u = len(señal)
+  t = np.linspace(0,u,u)
+  plt.plot(t,señal, c='g')
+  plt.plot(t,a, 'r')
+  plt.grid()
+  plt.axis('equal')
+  plt.xlabel('Tiempo')
+  plt.ylabel('Amplitud')
+  plt.title('Conversion Esc. Log')
+  plt.show()

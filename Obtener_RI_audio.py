@@ -27,9 +27,8 @@ def respuesta_impulso(file_y, file_x):
     
     return h_norm
 
-""""
-a1 = "audio_generate/impulso_sintetizado.wav"
-a2 = "audio_generate/convolucion.wav"
-a3 = respuesta_impulso(a1, a2)
-print(a3)
-"""
+if __name__ == '__main__':
+  a1 = "audio_generate/impulso_sintetizado.wav"
+  a2 = "audio_generate/convolucion.wav"
+  a3 = respuesta_impulso(a1, a2)
+  print(a3)

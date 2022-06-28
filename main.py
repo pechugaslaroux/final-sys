@@ -1,4 +1,3 @@
-from urllib.parse import scheme_chars
 import numpy as np
 from RuidoRosa import ruidoRosa_voss
 from graficar import graficar
@@ -18,7 +17,6 @@ from Restricciones import restric
 
 
 # Variables a usar
-#T60 = [1.04, 1.67, 1.08, 1.05, 1.23, 1.08, 0.9, 0.92, 0.75]
 T60 = [2.44, 1.87, 1.88, 2.14, 2.52, 2.55, 2.16, 1.61, 0.88]
 
 # se generan los audios ruido rosa, sine sweep y filtro inverso

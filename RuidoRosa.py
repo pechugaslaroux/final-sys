@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import soundfile as sf
+from graficar import graficar
 
 def ruidoRosa_voss(t, ncols=16, fs=44100):
     """
@@ -50,3 +51,8 @@ def ruidoRosa_voss(t, ncols=16, fs=44100):
     sf.write('./audio_generate/RuidoRosa.wav', total, fs)
     
     return total
+
+
+if __name__ == '__main__':
+  a = ruidoRosa_voss(10)
+  graficar(a)

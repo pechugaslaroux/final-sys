@@ -33,10 +33,8 @@ def sint_RI(T60 , fs = 44100, fi = [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000
     return yi_total_normalizado
 
 
-
-"""T_60 = [2.44, 1.87, 1.88, 2.14, 2.52, 2.55, 2.16, 1.61, 0.88]
-
-a = sint_RI(T_60)
-print(a)
-graficar(a)
-"""
+if __name__ == '__main__':
+  T_60 = [2.44, 1.87, 1.88, 2.14, 2.52, 2.55, 2.16, 1.61, 0.88]
+  a = sint_RI(T_60)
+  print(a)
+  graficar(a)

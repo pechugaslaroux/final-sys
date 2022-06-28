@@ -29,14 +29,14 @@ def FiltrodeOctava(audio_RI, fs = 44100):
                         rs=60, btype='band', analog=False,
                         ftype='butter', fs=user_fs, output='sos')
         banda_octava.append(sos)
-        filtaudio_octava.append(sosfilt(sos, audio_RI))  
+        filtaudio_octava.append(sosfilt(sos, audio_RI))
+          
     for index, fs in enumerate(fi):
         sf.write("./audio_generate/prueba_" + str(fs) + ".wav",filtaudio_octava[index],44100)     
     return filtaudio_octava
 
-"""
-a = de_wav_a_array("C:/Users/pablo/Documents/SyS/final-sys/Audios Descargados RI/audiocheck.net_whitenoisegaussian.wav")
-
-b = FiltrodeOctava(a)
-print(b)
-"""
+if __name__ == '__main__':
+  a = de_wav_a_array("./Audios Descargados RI/whitenoise.wav")
+  b = a['arr']
+  c = FiltrodeOctava(b)
+  print(c)

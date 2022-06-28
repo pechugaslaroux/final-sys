@@ -2,6 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def Cuadrados_Minimos(lista):
+    """Función para el cálculo de regresion lineal por cuadrados mínimos
+
+    Args:
+        lista (array): array de datos del audio ingresado
+
+    Returns:
+        array: array de datos de la recta para cada frecuencia filtrada
+    """
 
     array = np.array(lista, dtype=np.float64)
 
@@ -15,15 +23,6 @@ def Cuadrados_Minimos(lista):
     Syy = np.sum(yy)
     #print("Syy:", Syy)
 
-    """algo = []
-    acumula = 0
-    for i in array:
-        acumula = acumula + 1
-        algo.append(acumula)
-    
-    
-    #print("Sx:", Sx)
-    """
     algo = np.arange(0, int(len(array)))
     algo2 = np.array(algo, dtype=np.float64)
     Sx = np.sum(algo2)
@@ -51,6 +50,9 @@ def Cuadrados_Minimos(lista):
     EC2 = np.array(E)
     Sr2 = np.sum(EC2)
     #print("Sr2:", Sr2)
+    
+    #Var_Pxi = Sr2 * (1/(n-2))
+    #print("Var_Pxi:", Var_Pxi)
 
 
     #Var_Ao = ((Sxx*Sr2)/(((n*Sxx)-(Sx*Sx))*(n-2)))
@@ -72,22 +74,17 @@ def Cuadrados_Minimos(lista):
     print("Coeficiente Correlación Lineal (R):", R)
     return recta2
 
-
-"""# TESTING
-
-lista = [1.3, 3.5, 4.2, 5.0, 7.0, 8.8, 10.1, 12.5, 13.0, 15.6]
-u = len(lista)
-t = np.linspace(0,10,u)
-
-pepe = Cuadrados_Minimos(lista)
-
-
-plt.scatter(t,lista, c='g')
-plt.plot(t,pepe, 'r')
-plt.grid()
-plt.axis('equal')
-plt.xlabel('Tiempo')
-plt.ylabel('Amplitud')
-plt.title('Ajuste Cuadrados Minimos')
-plt.show()
-"""
+if __name__ == '__main__':
+  lista = [1.3, 3.5, 4.2, 5.0, 7.0, 8.8, 10.1, 12.5, 13.0, 15.6]
+  u = len(lista)
+  t = np.linspace(0,10,u)
+  pepe = Cuadrados_Minimos(lista)
+  
+  plt.scatter(t,lista, c='g')
+  plt.plot(t,pepe, 'r')
+  plt.grid()
+  plt.axis('equal')
+  plt.xlabel('Tiempo')
+  plt.ylabel('Amplitud')
+  plt.title('Ajuste Cuadrados Minimos')
+  plt.show()

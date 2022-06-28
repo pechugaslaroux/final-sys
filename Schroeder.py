@@ -9,7 +9,6 @@ def schroeder(audio, t = 0.45, fs = 44100):
     Returns:
         array: Devuelve valores luego de integrar
     """
-    #sch = np.cumsum(audio**2)[::-1]
     short_impulse = audio[0:round(t*fs)]
     integrate_sch = np.cumsum(short_impulse[::-1])/np.sum(audio)
     int_sch = integrate_sch[::-1]
@@ -19,4 +18,3 @@ def schroeder(audio, t = 0.45, fs = 44100):
           
     sch = 10 * np.log10((int_sch/max(int_sch))**2) 
     return sch
-   #return sch

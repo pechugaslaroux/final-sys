@@ -8,7 +8,7 @@ def playrec(t, audio_sn, fs = 44100):
 
     Args:
         t (int): tiempo de la grabación (en segundos)
-        audio_sn (str): el nombre del archivo de audio del sine sweep "./nombre"
+        audio_sn (str): el nombre del archivo de audio del sine sweep "./audio_generate/sinesweep.wav"
         fs (int, optional): frecuencia de sampleo. Default 44100.
     """
     """a = sd.query_devices()  
@@ -24,3 +24,6 @@ def playrec(t, audio_sn, fs = 44100):
     myrecording = sd.rec(int(t * fs), samplerate=fs, channels=1)
     sd.wait()  # Wait until recording is finished
     write('./audio_generate/output.wav', fs, myrecording)  # Save as WAV file
+
+if __name__ == '__main__':
+  a = playrec(13,"./audio_generate/sinesweep.wav")
