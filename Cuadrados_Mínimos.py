@@ -7,7 +7,7 @@ def Cuadrados_Minimos(lista):
 
     n = len(array)
     #print("n:", n)
-
+    arraymax = max(array)
     Sy = np.sum(array)
     #print("Sy:", Sy)
 
@@ -15,15 +15,18 @@ def Cuadrados_Minimos(lista):
     Syy = np.sum(yy)
     #print("Syy:", Syy)
 
-    algo = []
+    """algo = []
     acumula = 0
     for i in array:
         acumula = acumula + 1
         algo.append(acumula)
+    
+    
+    #print("Sx:", Sx)
+    """
+    algo = np.arange(0, int(len(array)))
     algo2 = np.array(algo, dtype=np.float64)
     Sx = np.sum(algo2)
-    #print("Sx:", Sx)
-
     xy = algo2 * array
     Sxy = np.sum(xy)
     #print("Sxy:", Sxy)
@@ -65,8 +68,8 @@ def Cuadrados_Minimos(lista):
         recta.append(y_xi)
     recta2 = np.array(recta)
 
-    #R = ((n*Sxy)-(Sx*Sy))/((np.sqrt((n*Sxx)-(Sx*Sx)))*(np.sqrt((n*Syy)-(Sy*Sy))))
-    #print("Coeficiente Correlación Lineal (R):", R)
+    R = ((n*Sxy)-(Sx*Sy))/((np.sqrt((n*Sxx)-(Sx*Sx)))*(np.sqrt((n*Syy)-(Sy*Sy))))
+    print("Coeficiente Correlación Lineal (R):", R)
     return recta2
 
 

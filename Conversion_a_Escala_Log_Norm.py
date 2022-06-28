@@ -10,12 +10,14 @@ def func_Conver_log_norm(señal):
         array: array de datos con conversion logaritmica normalizada
     """
     
-    señal2 = np.array(señal)
-    señal_max = np.max(señal2)
-    min_nonzero = np.min(señal2[np.nonzero(señal2)])
-    señal2[señal2 == 0] = min_nonzero
-    señal_norm = (10.0*np.log10((señal2/señal_max)**2))
-    return señal_norm
+    if 0 in señal:
+        minimum = min(i for i in señal if i > 0)
+        señal[señal == 0] = minimum
+            
+
+    logNorm = 10 * np.log10((señal/max(señal))**2) 
+   
+    return logNorm
 
 """
 señal = [0, 1, 2 ,3 ,5, 6, 2,-2, 0]

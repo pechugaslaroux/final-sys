@@ -1,10 +1,11 @@
 import numpy as np
-import pandas as pd
-from scipy import signal
+from scipy.signal import iirfilter, sosfilt
 import soundfile as sf
+from de_wav_a_array import de_wav_a_array
 
 
-def FiltrodeOctava(audio_RI, sr = 44100):
+
+def FiltrodeOctava(audio_RI, fs = 44100):
 
     """funcion filtro de octava según Norma IEC61260
 
@@ -14,41 +15,28 @@ def FiltrodeOctava(audio_RI, sr = 44100):
     Returns:
         array: Informacion del filtro
     """
-    #Octava - G = 1.0/2.0 
-    G = 1.0/2.0
-    #freacuencias centrales norma IEC61260
-    fi = [31.5,63,125,250,500,1000,2000,4000,8000,16000]
-    factor = np.power(2, G)
-
-    df = pd.DataFrame(audio_RI)
-
-    df.index = [(1/sr)*i for i in range(len(df.index))]
-
-    data_frame_file = df.sum(axis=1)
-
-    filt = []
-
-    for centerFrequency_Hz in fi:
-        #Calculo los extremos de la banda a partir de la frecuencia central
-        lowerCutoffFrequency_Hz=centerFrequency_Hz/factor;
-        upperCutoffFrequency_Hz=centerFrequency_Hz*factor;
+    user_fs = fs    
+    
+    
+    fi = [31.25, 62.5, 125, 250, 500, 1000, 2000, 4000, 8000]
+    banda_octava = []
+    filtaudio_octava = []
 
 
-        # Extremos los coeficientes del filtro 
-        b,a = signal.iirfilter(4, [2*np.pi*lowerCutoffFrequency_Hz,2*np.pi*upperCutoffFrequency_Hz],
-                                    rs=60, btype='band', analog=True,
-                                    ftype='butter') 
-
-        # para aplicar el filtro es más óptimo
-        sos = signal.iirfilter(4, [lowerCutoffFrequency_Hz,upperCutoffFrequency_Hz],
-                                    rs=60, btype='band', analog=False,
-                                    ftype='butter', fs=96000, output='sos')
-        w, h = signal.freqs(b,a)
-
-        # aplicando filtro al audio
-        filt.append(signal.sosfilt(sos, data_frame_file))
-    #crea los .wav
+    for fc in fi:
+        
+        sos = iirfilter(7, [fc / (2**(1/2)), fc * (2**(1/2))],
+                        rs=60, btype='band', analog=False,
+                        ftype='butter', fs=user_fs, output='sos')
+        banda_octava.append(sos)
+        filtaudio_octava.append(sosfilt(sos, audio_RI))  
     for index, fs in enumerate(fi):
-        sf.write("./audio_generate/prueba_" + str(fs) + ".wav",filt[index],44100)
-    return filt
+        sf.write("./audio_generate/prueba_" + str(fs) + ".wav",filtaudio_octava[index],44100)     
+    return filtaudio_octava
 
+"""
+a = de_wav_a_array("C:/Users/pablo/Documents/SyS/final-sys/Audios Descargados RI/audiocheck.net_whitenoisegaussian.wav")
+
+b = FiltrodeOctava(a)
+print(b)
+"""

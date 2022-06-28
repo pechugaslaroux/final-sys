@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.signal import hilbert, medfilt
+from scipy.signal import hilbert
 
 def suavizado(audio, metodo = 'hilbert', ventana = 11):
     """función que suaviza la señal ingresada.

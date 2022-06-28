@@ -2,12 +2,12 @@ import numpy as np
 import soundfile as sf
 from graficar import graficar
 
-def sint_RI(T60 , fs = 44100, fi = [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000 , 4000 , 8000 , 16000]):
+def sint_RI(T60 , fs = 44100, fi = [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000 , 4000 , 8000]):
     """función de sintetización de RI 
 
     Args:
         T60 (list): los T60 de la medición
-        fi (list, optional): las frecuencias centrales. Default [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000 , 4000 , 8000 , 16000].
+        fi (list, optional): las frecuencias centrales. Default [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000 , 4000 , 8000].
 
     Returns:
         array: la sumatoria de las frecuencas de la RI correspondiente
@@ -33,10 +33,10 @@ def sint_RI(T60 , fs = 44100, fi = [31.25 , 62.5 , 152 , 250 , 500 , 1000 , 2000
     return yi_total_normalizado
 
 
-"""Test 
-T_60 = [2.44, 1.87, 1.88, 2.14, 2.52, 2.55, 2.16, 1.61, 0.88, 0.65]
 
-a = sint_RI(T_60,44100)
+"""T_60 = [2.44, 1.87, 1.88, 2.14, 2.52, 2.55, 2.16, 1.61, 0.88]
+
+a = sint_RI(T_60)
 print(a)
 graficar(a)
 """
